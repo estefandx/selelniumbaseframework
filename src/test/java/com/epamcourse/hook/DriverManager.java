@@ -31,7 +31,7 @@ public class DriverManager {
 
 
     private static void initializeDriver() {
-        String browser = ConfigReader.getBrowser(); // Lee el navegador de la configuración
+        String browser = ConfigReader.getBrowser();
         switch (browser.toLowerCase()) {
             case "chrome":
                 driver = new ChromeDriver();
