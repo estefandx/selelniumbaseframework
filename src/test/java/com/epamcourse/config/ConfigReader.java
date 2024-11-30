@@ -28,8 +28,4 @@ public class ConfigReader {
     public static int getImplicitWait() {
         return Integer.parseInt(properties.getProperty("implicit.wait"));
     }
-
-    public static String getEnvironment() {
-        return properties.getProperty("environment");
-    }
 }

@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Pruebas SourceDemo"  parallel="classes" thread-count="3">
+    <test name="SourceDemo test">
+        <classes>
+            <class name="com.epamcourse.test.LoginTest"/>
+            <class name="com.epamcourse.test.CartTest"/>
+            <class name="com.epamcourse.test.ShoppingTest"/>
+        </classes>
+    </test>
+</suite>

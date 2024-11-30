@@ -11,27 +11,18 @@ import java.time.Duration;
 
 public class DriverManager {
 
-
-    private static WebDriver driver;
-
-
-    private DriverManager() {}
-
+    private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
-        if (driver == null) {
-            synchronized (DriverManager.class) {
-                if (driver == null) {
-                    initializeDriver();
-                }
-            }
+        if (driverThreadLocal.get() == null) {
+            initializeDriver();
         }
-        return driver;
+        return driverThreadLocal.get();
     }
-
 
     private static void initializeDriver() {
         String browser = ConfigReader.getBrowser();
+        WebDriver driver;
         switch (browser.toLowerCase()) {
             case "chrome":
                 driver = new ChromeDriver();
@@ -43,19 +34,22 @@ public class DriverManager {
                 driver = new EdgeDriver();
                 break;
             default:
-                throw new IllegalArgumentException("not support browser: " + browser);
+                throw new IllegalArgumentException("Not supported browser: " + browser);
         }
-        configureDriver();
+        configureDriver(driver);
+        driverThreadLocal.set(driver);
     }
 
-    private static void configureDriver() {
+    private static void configureDriver(WebDriver driver) {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(ConfigReader.getImplicitWait()));
     }
+
     public static void quitDriver() {
+        WebDriver driver = driverThreadLocal.get();
         if (driver != null) {
             driver.quit();
-            driver = null;
+            driverThreadLocal.remove();
         }
     }
 }

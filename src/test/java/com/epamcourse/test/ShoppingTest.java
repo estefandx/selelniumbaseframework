@@ -7,6 +7,10 @@ import com.epamcourse.data.userinfo.UserInfoBuilder;
 import com.epamcourse.hook.BaseTest;
 import com.epamcourse.pagecomponent.Product;
 import com.epamcourse.pageobject.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -27,6 +31,9 @@ public class ShoppingTest  extends BaseTest {
 
 
     @Test
+    @Description("This test attempts to validate that the total price is correct in the checkout")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Bryan Moreno")
     public void TestShoppingSuccessfully() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         UserInfo userInfo = UserInfoBuilder.validUser();

@@ -8,14 +8,19 @@ import com.epamcourse.pagecomponent.Product;
 import com.epamcourse.pageobject.CartPage;
 import com.epamcourse.pageobject.LoginPage;
 import com.epamcourse.pageobject.ProductPage;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 
+
 public class CartTest extends BaseTest {
 
     @Test
+    @Description("This test attempts to add products in the cart")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Bryan Moreno")
     public void testItemsAddcartSaccesfully() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         LoginUser validUser = LoginUserBuilder.validUser();
@@ -34,8 +39,5 @@ public class CartTest extends BaseTest {
 
         Assert.assertEquals(cartItem1.getItemPrice(),priceProduct1);
         Assert.assertEquals(cartItem2.getItemPrice(),priceProduct2);
-
-
-
     }
 }
