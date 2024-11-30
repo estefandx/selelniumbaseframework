@@ -2,6 +2,7 @@ package com.epamcourse.pageobject;
 
 import com.epamcourse.pagecomponent.CartItem;
 import com.epamcourse.pagecomponent.Product;
+import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,7 @@ public class CartPage  extends  BasePage{
         super(driver);
     }
 
+    @Step("get list of items in the cart")
     public List<CartItem> getListCartItems(){
         List<CartItem> cartItems = new ArrayList<>();
         for(WebElement product: cartItemList){
@@ -31,6 +33,7 @@ public class CartPage  extends  BasePage{
         return  cartItems;
     }
 
+    @Step("get item by name: {0} ")
     public CartItem getItem(String itemName) {
 
         List<CartItem> cartItems = getListCartItems();

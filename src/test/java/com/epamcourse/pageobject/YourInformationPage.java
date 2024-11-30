@@ -1,6 +1,7 @@
 package com.epamcourse.pageobject;
 
 import com.epamcourse.data.userinfo.UserInfo;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -28,6 +29,7 @@ public class YourInformationPage extends BasePage {
         super(driver);
     }
 
+    @Step("fill information with first Name:  {0}.firstName  lastName: {0}.lastName  zipcode: {0}.postalCode")
     public void fillInformation(UserInfo userInfo) {
         firstNameInput.sendKeys(userInfo.getFirstName());
         lastNameInput.sendKeys(userInfo.getLastName());

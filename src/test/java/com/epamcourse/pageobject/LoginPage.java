@@ -1,6 +1,7 @@
 package com.epamcourse.pageobject;
 
 import com.epamcourse.data.loginuser.LoginUser;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,7 +26,7 @@ public class LoginPage extends  BasePage {
         super(driver);
     }
 
-
+    @Step("Enter valid user with username: {0.username} and password: {0.password}")
     public ProductPage loginAs(LoginUser loginUser) {
         userNameInput.sendKeys(loginUser.getUsername());
         passwordInput.sendKeys(loginUser.getPassword());
@@ -33,12 +34,13 @@ public class LoginPage extends  BasePage {
         return new ProductPage(driver);
     }
 
+    @Step("Enter block user with username: {0.username} and password: {0.password}")
     public void loginBlockUser(LoginUser loginUser) {
         userNameInput.sendKeys(loginUser.getUsername());
         passwordInput.sendKeys(loginUser.getPassword());
         loginButton.click();
     }
-
+    @Step("check error message")
     public String getErrorMessage(){
         return  errormessage.getText();
     }

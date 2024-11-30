@@ -1,6 +1,7 @@
 package com.epamcourse.pageobject;
 
 import com.epamcourse.pagecomponent.Product;
+import io.qameta.allure.Step;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,6 +24,7 @@ public class ProductPage extends  BasePage{
         super(driver);
     }
 
+    @Step("get list products")
     public List<Product> getListProducts(){
         List<Product> products = new ArrayList<>();
         for(WebElement product: productList){
@@ -30,7 +32,7 @@ public class ProductPage extends  BasePage{
         }
         return  products;
     }
-
+    @Step("get product by name {0}")
     public Product getProduct(String productName) {
 
         List<Product> products = getListProducts();
@@ -42,6 +44,7 @@ public class ProductPage extends  BasePage{
         throw new NoSuchElementException("product not found: " + productName);
     }
 
+    @Step("go to Cart Page")
     public CartPage cartItemsButton(){
         cartButton.click();
         return  new CartPage(driver);

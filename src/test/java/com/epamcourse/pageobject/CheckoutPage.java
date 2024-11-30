@@ -1,5 +1,6 @@
 package com.epamcourse.pageobject;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -20,7 +21,7 @@ public class CheckoutPage  extends  BasePage{
         super(driver);
     }
 
-
+    @Step("get summary total price")
     public BigDecimal getSumaryTotalPrice(){
         String value = sumaryPrice.getText();
         Pattern pattern = Pattern.compile("\\$([\\d,]+\\.\\d{2})");
