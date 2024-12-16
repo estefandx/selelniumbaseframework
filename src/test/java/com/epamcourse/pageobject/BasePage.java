@@ -1,6 +1,5 @@
 package com.epamcourse.pageobject;
 
-import io.qameta.allure.internal.shadowed.jackson.databind.introspect.TypeResolutionContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,7 +13,7 @@ public class BasePage {
 
     public BasePage(WebDriver driver){
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         PageFactory.initElements(this.driver, this);
     }
 

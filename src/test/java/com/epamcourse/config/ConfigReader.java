@@ -21,8 +21,8 @@ public class ConfigReader {
         return properties.getProperty("browser");
     }
 
-    public static String getUrl() {
-        return properties.getProperty("url");
+    public static String getUrl(String urlKey) {
+        return properties.getProperty(urlKey);
     }
 
     public static int getImplicitWait() {

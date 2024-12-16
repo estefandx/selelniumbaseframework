@@ -1,10 +1,20 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Pruebas SourceDemo"  parallel="classes" thread-count="3">
-    <test name="SourceDemo test">
+    <test name="search book test">
+        <parameter name="url" value="urlamazonbooks" />
         <classes>
-            <class name="com.epamcourse.test.LoginTest"/>
-            <class name="com.epamcourse.test.CartTest"/>
-            <class name="com.epamcourse.test.ShoppingTest"/>
+            <class name="com.epamcourse.test.BaseTest">
+            </class>
+            <class name="com.epamcourse.test.BookDepositoryTest"/>
         </classes>
     </test>
+    <test name="mouse action test">
+        <parameter name="url" value="urlqatools" />
+        <classes>
+            <class name="com.epamcourse.test.BaseTest"/>
+            <class name="com.epamcourse.test.MouseActionsTest"/>
+        </classes>
+
+    </test>
+
 </suite>
